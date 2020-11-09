@@ -104,7 +104,7 @@ $ mysql
 show databases:
 use ecomdb;
 select * from products;
-- {look for products's data}
+- {look for products' data}
 ```
 
 
@@ -116,6 +116,13 @@ select * from products;
 sudo yum install -y httpd php php-mysql
 sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
 sudo firewall-cmd --reload
+```
+
+1. Check
+
+```
+sudo firewall-cmd --list-all
+- {look for "80/tcp" on the "ports:" line}
 ```
 
 2. Configure httpd
@@ -133,10 +140,18 @@ sudo service httpd start
 sudo systemctl enable httpd
 ```
 
+3. Check
+
+```
+sudo service httpd status
+- {check for "active (running)"}
+```
+
 4. Download code
 
 ```
 sudo yum install -y git
+- {only when "git --version" doesn't reply with some version #}
 git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
 ```
 
@@ -163,4 +178,10 @@ sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 
 ```
 curl http://localhost
+```
+
+6. Check
+
+```
+- {look for "Product List" in the curl output}
 ```
