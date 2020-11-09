@@ -13,26 +13,48 @@ sudo yum install -y firewalld
 sudo service firewalld start
 sudo systemctl enable firewalld
 ```
+1a. Check
+...
+sudo firewalld status
+- {check for "active (running)"}
+firewall-cmd --list-all
+- {look for "ssh" on the "services:" output line
+...
 
 ## Deploy and Configure Database
 
-1. Install MariaDB
+2. Install MariaDB
 
 ```
 sudo yum install -y mariadb-server
 sudo vi /etc/my.cnf
+- {only if any change required}
 sudo service mariadb start
 sudo systemctl enable mariadb
 ```
 
-2. Configure firewall for Database
+2a. Check
+
+...
+sudo service mariadb status
+- {check for "active (running)"}
+...
+
+3. Configure firewall for Database
 
 ```
 sudo firewall-cmd --permanent --zone=public --add-port=3306/tcp
 sudo firewall-cmd --reload
 ```
 
-3. Configure Database
+3a. Check
+
+...
+sudo firewall-cmd --list-all
+- {check for "3306/tcp" on the "ports:" line}
+...
+
+4. Configure Database
 
 ```
 $ mysql
@@ -44,7 +66,15 @@ MariaDB > FLUSH PRIVILEGES;
 
 > ON a multi-node setup remember to provide the IP address of the web server here: `'ecomuser'@'web-server-ip'`
 
-4. Load Product Inventory Information to database
+4a. Check
+
+...
+$ mysql
+MariaDB > show database;
+- {look for "ecomdb"}
+...
+
+5. Load Product Inventory Information to database
 
 Create the db-load-script.sql
 
@@ -64,6 +94,16 @@ Run sql script
 
 mysql < db-load-script.sql
 ```
+
+5a. Check
+
+...
+$ mysql
+show databases:
+use ecomdb;
+select * from products;
+- {look for products's data}
+...
 
 
 ## Deploy and Configure Web
