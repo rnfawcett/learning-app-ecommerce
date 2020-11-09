@@ -14,7 +14,7 @@ sudo service firewalld start
 sudo systemctl enable firewalld
 ```
 
-1a. Check
+1(a). Check
 
 ```
 sudo firewalld status
