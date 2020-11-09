@@ -13,13 +13,15 @@ sudo yum install -y firewalld
 sudo service firewalld start
 sudo systemctl enable firewalld
 ```
+
 1a. Check
-...
+
+```
 sudo firewalld status
 - {check for "active (running)"}
 firewall-cmd --list-all
 - {look for "ssh" on the "services:" output line
-...
+```
 
 ## Deploy and Configure Database
 
@@ -35,10 +37,10 @@ sudo systemctl enable mariadb
 
 2a. Check
 
-...
+```
 sudo service mariadb status
 - {check for "active (running)"}
-...
+```
 
 3. Configure firewall for Database
 
@@ -49,10 +51,10 @@ sudo firewall-cmd --reload
 
 3a. Check
 
-...
+```
 sudo firewall-cmd --list-all
 - {check for "3306/tcp" on the "ports:" line}
-...
+```
 
 4. Configure Database
 
@@ -68,11 +70,11 @@ MariaDB > FLUSH PRIVILEGES;
 
 4a. Check
 
-...
+```
 $ mysql
 MariaDB > show database;
 - {look for "ecomdb"}
-...
+```
 
 5. Load Product Inventory Information to database
 
@@ -97,13 +99,13 @@ mysql < db-load-script.sql
 
 5a. Check
 
-...
+```
 $ mysql
 show databases:
 use ecomdb;
 select * from products;
 - {look for products's data}
-...
+```
 
 
 ## Deploy and Configure Web
