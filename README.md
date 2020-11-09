@@ -14,7 +14,7 @@ sudo service firewalld start
 sudo systemctl enable firewalld
 ```
 
-#### Check
+* Check
 
 ```
 sudo firewalld status
@@ -35,7 +35,7 @@ sudo service mariadb start
 sudo systemctl enable mariadb
 ```
 
-#### Check
+* Check
 
 ```
 sudo service mariadb status
@@ -49,7 +49,7 @@ sudo firewall-cmd --permanent --zone=public --add-port=3306/tcp
 sudo firewall-cmd --reload
 ```
 
-#### Check
+* Check
 
 ```
 sudo firewall-cmd --list-all
@@ -68,7 +68,7 @@ MariaDB > FLUSH PRIVILEGES;
 
 > ON a multi-node setup remember to provide the IP address of the web server here: `'ecomuser'@'web-server-ip'`
 
-#### Check
+* Check
 
 ```
 $ mysql
@@ -97,7 +97,7 @@ Run sql script
 mysql < db-load-script.sql
 ```
 
-#### Check
+* Check
 
 ```
 $ mysql
@@ -118,7 +118,7 @@ sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
 sudo firewall-cmd --reload
 ```
 
-#### Check
+* Check
 
 ```
 sudo firewall-cmd --list-all
@@ -140,7 +140,7 @@ sudo service httpd start
 sudo systemctl enable httpd
 ```
 
-#### Check
+* Check
 
 ```
 sudo service httpd status
